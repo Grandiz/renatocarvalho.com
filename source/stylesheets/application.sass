@@ -82,7 +82,7 @@
 
 
 body
-  color: #444
+  color: #666
   background-color: #fff
   font-size: 20px
   font-family: "Helvetica Neue"
@@ -91,16 +91,20 @@ body
 
 h1
   font-size: 40px
-  line-height: 20px
+  line-height: 40px
   font-weight: 300
   margin-top: 2em
+  color: #555
 
 a
   color: #5745c2
   display: inline-block
   border-radius: 2px
-  padding: 2px
+  padding: 2px 4px
   font-weight: 400
+  text-decoration: none
+  margin-left: -1px
+  margin-right: -1px
 
   &:hover
     background-color: #5745c2
@@ -109,7 +113,12 @@ a
 
 p
   margin-bottom: 2em
-  text-align: justify
+
+  &:hover
+    a
+      text-decoration: underline
+      &:hover
+        text-decoration: none
 
 .l-container
   // +outer-container
