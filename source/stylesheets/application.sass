@@ -82,7 +82,7 @@
 
 
 body
-  color: #333
+  color: #444
   background-color: #fff
   font-size: 20px
   font-family: "Helvetica Neue"
@@ -90,11 +90,35 @@ body
   font-weight: 300
 
 h1
-  font-weight: 200
+  font-size: 40px
+  line-height: 20px
+  font-weight: 300
+  margin-top: 2em
+
+a
+  color: #5745c2
+  display: inline-block
+  border-radius: 2px
+  padding: 2px
+  font-weight: 400
+
+  &:hover
+    background-color: #5745c2
+    color: #fff
+    text-decoration: none
+
+p
+  margin-bottom: 2em
+  text-align: justify
 
 .l-container
-  +outer-container
+  // +outer-container
 
 section.about
-  +span-columns(6 of 12)
-  +shift(3)
+  +span-columns(4 of 12)
+  +shift(2)
+  text-align: left
+
+  +media(max-width 680px)
+    +shift(1)
+    +span-columns(10 of 12)
