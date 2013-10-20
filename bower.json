@@ -1,0 +1,22 @@
+{
+  "name": "instituto-governanca",
+  "version": "0.0.0",
+  "homepage": "https://github.com/startae/open-governanca",
+  "authors": [
+    "Renato Carvalho <renatolz@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "html5shiv": "~3.7.0",
+    "selectivizr": "~1.0.2"
+  }
+}

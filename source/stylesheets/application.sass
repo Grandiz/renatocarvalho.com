@@ -1,0 +1,256 @@
+@import normalize-css/normalize
+@import bourbon/app/assets/stylesheets/bourbon
+@import neat/app/assets/stylesheets/neat
+
+// ---------------------------------------------------------------------------------
+//  MIXINS
+// ---------------------------------------------------------------------------------
+@mixin image-2x($image, $width, $height)
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx)
+    // on retina, use image that's scaled by 2
+    background: transparent image-url($image) 0 0 no-repeat
+    background-size: $width $height
+
+=background-2x($background, $file: 'png')
+  $image: #{$background+"."+$file}
+  $image2x: #{$background+"@2x."+$file}
+
+  background: image-url($image) no-repeat
+  @media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx)
+    background-image: image-url($image2x)
+    background-size: image-width($image) image-height($image)
+
+// =!classes (Generic Classes)
+// Front-end debugging
+=debug
+  background-color: rgba(red,0.6)
+
+.debug
+  +debug
+
+
+// Visibility & Display
+.hide
+  display: none
+
+
+// Invisible Content Just for Screen Reader Users
+=hidden
+  position: absolute
+  left: 0px
+  top: -9900px
+  width: 1px
+  height: 1px
+  overflow: hidden
+
+.hidden
+  +hidden
+
+
+// ---------------------------------------------------------------------------------
+//  BUTTTONS
+// ---------------------------------------------------------------------------------
+
+*:focus
+  outline: 0
+
+.btn
+  padding: 10px 20px
+  border: 0
+
+
+  &.btn-primary
+    background-color: #009bff
+    font-family: "Helvetica Neue"
+    font-size: 16px
+    font-weight: bold
+    color: #fff
+    text-transform: uppercase
+    height: 51px
+    border-top-right-radius: 4px
+    border-bottom-right-radius: 4px
+    box-shadow: inset 0 -2px 3px 0 rgba(#000, .1)
+
+    &:hover, &:focus
+      background: #1fa7ff
+
+    &:active, &.active
+      background: darken(#009bff, 10%)
+      @include box-shadow(inset 0 3px 3px 0 rgba(#492106, .2))
+
+// ---------------------------------------------------------------------------------
+
+
+
+
+body
+  color: #666f82
+  background-color: #ccc
+  font-size: 20px
+  font-family: "Helvetica Neue"
+  text-align: center
+
+
+.apresentacao, .nossos-parceiros, .creditos
+  @include span-columns(12)
+
+
+.apresentacao
+  background-color: #dae2e8
+  background: #dce9f1 image-url("bg-body.jpg") 50% 50% no-repeat
+  +image-2x("bg-body@2x.jpg", 1440px, 795px)
+  background-position: 50% 50% !important
+  position: relative
+
+  .arrow-effect
+    position: absolute
+    display: block
+    width: 50%
+    bottom: 0
+    height: 24px
+    background-color: #fff
+
+    &.is-left
+      left: -24px
+
+      &:after
+        content: ''
+        display: block
+        +triangle(24px, #fff, down-left)
+        float: right
+        margin-right: -24px
+
+    &.is-right
+      right: -24px
+      &:after
+        content: ''
+        display: block
+        +triangle(24px, #fff, down-right)
+        margin-left: -24px
+
+
+
+
+  .container
+    @include span-columns(10)
+    @include shift(1)
+    height: 690px
+    padding-top: 112px
+
+    .logo
+      +hide-text
+      width: 272px
+      height: 58px
+      margin: 0 auto
+      display: block
+      background: transparent image-url("logo-instituto-governanca.png") 0 0 no-repeat
+      +image-2x("logo-instituto-governanca@2x.png", 272px, 58px)
+
+    h2
+      color: #0075c2
+      font-size: 37px
+      font-weight: 300
+
+    p
+      font-family: "Enriqueta"
+
+    .form-interessados
+      @include span-columns(8)
+      @include shift(2)
+      background-color: rgba(#2370a0, .1)
+      padding: 10px 0
+      border-radius: 8px
+      border: 1px solid rgba(#000, .05)
+
+      input
+        height: 51px
+        width: 65%
+        border-top-left-radius: 4px
+        border-bottom-left-radius: 4px
+        padding: 10px 5px 10px 50px
+        font-family: "Helvetica Neue"
+        font-weight: 300
+        border: 0
+        box-shadow: inset 0 2px 3px 0 rgba(#000, .2), inset 0 0 1px 1px #8092ae
+        background: #fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAYAAABe3VzdAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGOTdGMTE3NDA3MjA2ODExODA4M0VCODNDNjJCRDdDMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2RDRDNkNCMTJEMUUxMUUzOThEMENCMEQ1ODk2QjA5QSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2RDRDNkNCMDJEMUUxMUUzOThEMENCMEQ1ODk2QjA5QSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDM4MDExNzQwNzIwNjgxMTgyMkFFRDVCNEMzM0ZGQTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjk3RjExNzQwNzIwNjgxMTgwODNFQjgzQzYyQkQ3QzEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz78ei6OAAABQUlEQVR42uyY3Q2DIBCAkXQB3t2CFeoqsoIjdAVdpa7QKfS9I7SHOUglYJEf5cFLzvhg4OM+uBCraZo4IeQBeSdlxQjZVQD4LBBOQ1J4MFJuMAnYQA4Fwkmm5gaPN6SAfOFePLuikqer63opGjWJEfSskHM3Cs4E1B+cpHxAuFWBJGBvaFXKBb4foVQAmEw93zzPDLKXbeaDlRMWvRwXwDMqFWbVAEzPS39AZD9sD1RuVQpwLbJwcw8ypM6t3DqeUmrOTy0DrFaQ+JRbjaBSm0ErYC7l1gWaSn0BUyp3fe8afxXqFHudtoBTHt0dqKeeEOWuPbupNBRwj/IopaGK96gjKRt+KKC+dXic6DbmlkQjeto/ZUFKUwJubXpn4z1SsUs5SXnxTQmYJSgpPC7AC7AEwLFgvuXXR1co5PLz6CvAAL27mTzLbTxJAAAAAElFTkSuQmCC') no-repeat 15px 18px
+        background-size: 20px 15px
+
+
+        &:focus
+          border-color: #9ecaed
+          box-shadow: 0 0 10px #007ad0, inset 0 2px 3px 0 rgba(#000, .2), inset 0 0 1px 1px #8092ae
+
+
+
+.nossos-parceiros
+  background-color: #fff
+  .container
+    height: 330px
+    padding-top: 45px
+
+    h2
+      font-size: 27px
+      font-weight: 500
+      letter-spacing: -1px
+
+    .parceiros
+      width: 650px
+      margin: 0 auto
+
+      .parceiro
+        border: 1px solid #ccc
+        height: 115px
+        width: 320px
+        float: left
+
+        &.open-service
+          border-top-left-radius: 4px
+          border-bottom-left-radius: 4px
+          border-right: 0
+          padding-top: 28px
+
+        &.h3engenharia
+          border-top-right-radius: 4px
+          border-bottom-right-radius: 4px
+          padding-top: 32px
+
+
+
+.creditos
+  background: #1892d2
+  .container
+    height: 170px
+    padding-top: 60px
+
+    p
+      color: #fff
+      font-family: "Enriqueta"
+      font-size: 15px
+      margin: 0
+
+
+
+
+.thanks
+  @include span-columns(6)
+  @include shift(3)
+  background-color: rgba(#fff, .3)
+  padding: 0
+  border-radius: 8px
+  border: 1px solid rgba(#000, .15)
+  padding: 40px 20px
+
+  h1
+    margin: 0
+    padding: 0 0 8px 0
+    font-size: 24px
+    font-weight: 500
+    color: darken(#666f82, 10%)
+
+  p
+    font-size: 16px
+    margin: 15px 0 5px 0
+    padding: 0
+
+  b
+    font-weight: bold
