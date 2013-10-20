@@ -81,8 +81,6 @@
 // ---------------------------------------------------------------------------------
 
 
-
-
 body
   color: #333
   background-color: #fff
@@ -93,3 +91,10 @@ body
 
 h1
   font-weight: 200
+
+.l-container
+  +outer-container
+
+section.about
+  +span-columns(6 of 12)
+  +shift(3)
