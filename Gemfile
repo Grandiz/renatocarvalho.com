@@ -1,16 +1,21 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
-gem "middleman", "~>3.1.5"
+# server
+gem 'unicorn', '~> 4.7.0'
 
-# Live-reloading plugin
-gem "middleman-livereload", "~> 3.1.0"
+# Middleman Gems
+gem 'middleman', '~> 3.2.0'
+gem 'middleman-livereload', '~> 3.1.0'
+gem 'middleman-smusher', '~> 3.0.0'
 
-# For faster file watcher updates on Windows:
-gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
+# For Time.zone
+gem 'tzinfo', '~> 1.0.1'
 
-# Cross-templating language block fix for Ruby 1.8
-platforms :mri_18 do
-  gem "ruby18_source_location"
-end
+# For feed.xml.builder
+# gem 'builder', '~> 3.1.3'
 
-gem 'slim', '~> 2.0.1'
+# Other
+gem 'thin', '~> 1.5.1'
+gem 'slim', '~> 2.0.2'
+gem 'sass', '~> 3.2.12'
